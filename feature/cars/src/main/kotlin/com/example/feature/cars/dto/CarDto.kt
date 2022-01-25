@@ -1,6 +1,11 @@
 package com.example.feature.cars.dto
 
+import org.springframework.data.annotation.Id
+import org.springframework.data.relational.core.mapping.Table
+
+@Table("car")
 data class CarDto(
+    @Id
     val id: Int,
     val model: String,
     val color: Color

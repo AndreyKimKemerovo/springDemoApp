@@ -44,5 +44,6 @@ subprojects {
 
     apply {
         plugin("io.spring.dependency-management")
+        plugin("org.springframework.boot")
     }
 }

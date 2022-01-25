@@ -2,8 +2,10 @@ package com.example.demoapp
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories
 
-@SpringBootApplication(scanBasePackages = ["com.example.feature.cars"])
+@SpringBootApplication(scanBasePackages = ["com"])
+@EnableJdbcRepositories(basePackages = ["com"])
 class DemoAppApplication
 
 fun main(args: Array<String>) {

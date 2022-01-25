@@ -1,26 +1,18 @@
 package com.example.feature.cars.controller
 
 import com.example.feature.cars.dto.CarDto
-import com.example.feature.cars.dto.Color
+import com.example.feature.cars.repository.CarService
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.Mapping
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class CarController {
+@RequestMapping("/car")
+class CarController(
+    val service: CarService
+) {
 
-    @GetMapping("/cars")
-    fun getCarsList(): List<CarDto> {
-        return listOf(
-            CarDto(
-                id = 1,
-                model = "BMW",
-                color = Color.RED
-            ),
-            CarDto(
-                id = 2,
-                model = "AUDI",
-                color = Color.BLUE
-            )
-        )
-    }
+    @GetMapping
+    fun getCarsList(): List<CarDto> = service.list()
 }
