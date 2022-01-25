@@ -8,6 +8,7 @@ import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories
 @EnableJdbcRepositories(basePackages = ["com"])
 class DemoAppApplication
 
+@Suppress("SpreadOperator")
 fun main(args: Array<String>) {
     runApplication<DemoAppApplication>(*args)
 }

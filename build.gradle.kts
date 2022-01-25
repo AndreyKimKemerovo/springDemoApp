@@ -1,10 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-        buildscript {
-            repositories {
-                mavenCentral()
-            }
-        }
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath(dependencyNotation = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.15.0")
+    }
+}
 
 plugins {
     id("org.springframework.boot") version "2.6.3"
@@ -15,6 +18,8 @@ plugins {
 }
 
 allprojects {
+    apply(plugin = "io.gitlab.arturbosch.detekt")
+
     group = "com.example"
     version = "1.0.0"
 
@@ -32,7 +37,18 @@ allprojects {
 
     repositories {
         mavenCentral()
+        jcenter()
         maven { url = uri("https://jitpack.io") }
+    }
+
+    configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
+        config = files("$rootDir/configuration/kotlin-detekt/detekt.yml")
+        reports {
+            html {
+                enabled = true
+                destination = file("$rootDir/build/reports/detekt/${project.name}/detekt.html")
+            }
+        }
     }
 }
 

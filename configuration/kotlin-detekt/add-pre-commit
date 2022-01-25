@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+if [ -z ".git/hooks/pre-commit" ]; then
+  if ! grep -q "######## detekt-GRADLE HOOK START ########" .git/hooks/pre-commit; then
+    cat ./configuration/kotlin-detekt/pre-commit .git/hooks/pre-commit
+  fi
+else
+  cp ./configuration/kotlin-detekt/pre-commit .git/hooks/pre-commit
+fi
+exit 0

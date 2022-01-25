@@ -3,7 +3,6 @@ package com.example.feature.cars.controller
 import com.example.feature.cars.dto.CarDto
 import com.example.feature.cars.repository.CarService
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.Mapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
